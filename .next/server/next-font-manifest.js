@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/Users/smanne/workspace/freedom-reviews/app/layout\":[\"static/media/a34f9d1faa5f3315-s.p.woff2\",\"static/media/07a54048a9278940-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"
