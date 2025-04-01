@@ -1,0 +1,15 @@
+{{ $title := .title }}
+{{ $count := .count }}
+{{ $image := .image }}
+
+<a href="/categories/{{ $title | urlize }}" class="group block">
+    <div class="card h-full border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden hover:shadow-lg transition-shadow theme-transition bg-white dark:bg-surface-dark">
+        <div class="relative h-40 m-4">
+            <img src="{{ $image }}" alt="{{ $title }}" class="absolute inset-0 w-full h-full object-cover rounded-lg">
+        </div>
+        <div class="p-4">
+            <h3 class="text-lg font-bold dark:text-white">{{ $title }}</h3>
+            <p class="text-gray-600 dark:text-gray-400">{{ $count }} reviews</p>
+        </div>
+    </div>
+</a> 

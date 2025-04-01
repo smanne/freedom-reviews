@@ -1,0 +1,225 @@
+.btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200;
+}
+
+.btn-primary {
+    @apply bg-primary text-white hover:bg-primary/90 shadow-sm hover:shadow;
+}
+
+.btn-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-white shadow-sm hover:shadow;
+}
+
+.btn-ghost {
+    @apply text-primary hover:bg-primary/10;
+}
+
+.badge {
+    @apply inline-flex items-center rounded-full text-sm font-medium;
+}
+
+.prose {
+    @apply max-w-none;
+}
+
+.prose h2 {
+    @apply text-2xl font-bold mt-8 mb-4;
+}
+
+.prose p {
+    @apply mb-4 text-gray-600;
+}
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Featured Review Styles */
+.featured-review {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    width: 100%;
+}
+
+.featured-review.active {
+    opacity: 1;
+    position: relative;
+}
+
+.featured-review [class*="aspect-"] {
+    @apply overflow-hidden rounded-lg;
+}
+
+.featured-review img {
+    @apply transition-transform duration-300;
+}
+
+.featured-review:hover img {
+    @apply transform scale-105;
+}
+
+/* Carousel Navigation */
+.carousel-prev,
+.carousel-next {
+    @apply bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full p-2.5 hover:bg-primary/10 dark:hover:bg-primary/10 transition-all duration-200 shadow-lg z-10;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: theme('colors.gray.700');
+}
+
+.dark .carousel-prev,
+.dark .carousel-next {
+    color: theme('colors.gray.300');
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    @apply transform scale-110 text-primary;
+}
+
+.carousel-prev svg,
+.carousel-next svg {
+    @apply w-5 h-5;
+    stroke-width: 2px;
+}
+
+/* Featured Review Hover Effects */
+.featured-review .btn-primary {
+    transition: all 0.3s ease;
+}
+
+.featured-review .btn-primary:hover {
+    transform: translateX(4px);
+}
+
+.featured-review img.object-cover {
+    transition: transform 0.5s ease;
+}
+
+.featured-review:hover img.object-cover {
+    transform: scale(1.05);
+}
+
+/* Featured Review Carousel */
+.featured-review.active {
+    opacity: 1;
+    position: relative;
+}
+
+.featured-review .aspect-[4/3] {
+    @apply overflow-hidden rounded-lg;
+}
+
+.carousel-dot {
+    @apply w-2 h-2 rounded-full bg-white/50 hover:bg-white/75 transition-all duration-200;
+}
+
+.carousel-dot.active {
+    @apply bg-white;
+}
+
+/* Rating Stars */
+.rating-stars {
+    display: inline-flex;
+    gap: 0.25rem;
+}
+
+.rating-star {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.rating-star.filled {
+    color: #FFD700;
+}
+
+.rating-star.half {
+    position: relative;
+    color: #FFD700;
+}
+
+.rating-star.half::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(255,255,255,0.2);
+}
+
+/* Category Badge */
+.category-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background-color: var(--primary-color);
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.category-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Search Bar */
+.search-input {
+    @apply bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-primary/50 text-gray-900 dark:text-white placeholder-gray-500;
+}
+
+/* Latest Reviews Card */
+.review-card {
+    @apply bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 transition-all duration-200;
+}
+
+.review-card:hover {
+    @apply shadow-md border-gray-200 dark:border-gray-600;
+}
+
+.review-card .author-section {
+    @apply flex items-center gap-2 mt-4;
+}
+
+.review-card .author-avatar {
+    @apply flex-shrink-0 w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden;
+}
+
+.review-card .author-info {
+    @apply min-w-0 flex-1;
+}
+
+.review-card .author-name {
+    @apply text-sm font-medium text-gray-700 dark:text-gray-300 truncate leading-tight;
+}
+
+.review-card .author-date {
+    @apply text-xs text-gray-500 dark:text-gray-400 mt-0.5;
+}
+
+/* Logo */
+.site-logo {
+    height: 1.5rem;
+    width: auto;
+    display: block;
+}
+
+.dark .site-logo {
+    filter: brightness(0) invert(1);
+} 

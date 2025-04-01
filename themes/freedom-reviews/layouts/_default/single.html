@@ -1,0 +1,110 @@
+{{ define "main" }}
+<article class="container mx-auto px-4 py-8">
+    <header class="max-w-4xl mx-auto mb-8">
+        {{ with .Params.category }}
+        <div class="mb-4">
+            <span class="badge border px-2 py-1">{{ . }}</span>
+        </div>
+        {{ end }}
+        
+        <h1 class="text-4xl font-bold mb-4">{{ .Title }}</h1>
+        
+        <div class="flex items-center gap-6 text-gray-600 mb-6">
+            {{ with .Params.author }}
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
+                    {{ slice . 0 1 }}
+                </div>
+                <span>{{ . }}</span>
+            </div>
+            {{ end }}
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+            {{ with .Params.rating }}
+            <div class="flex items-center gap-1">
+                {{ range seq . }}
+                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+
+        {{ with .Params.image }}
+        <div class="relative aspect-video rounded-lg overflow-hidden mb-8">
+            <img src="{{ . }}" alt="{{ $.Title }}" class="absolute inset-0 w-full h-full object-cover">
+        </div>
+        {{ end }}
+    </header>
+
+    <div class="max-w-4xl mx-auto">
+        <div class="prose max-w-none">
+            {{ .Content }}
+        </div>
+
+        {{ with .Params.pros_cons }}
+        <div class="mt-8 grid md:grid-cols-2 gap-6">
+            {{ with .pros }}
+            <div class="border rounded-lg p-6">
+                <h3 class="text-xl font-bold mb-4 text-green-600">Pros</h3>
+                <ul class="space-y-2">
+                    {{ range . }}
+                    <li class="flex items-start gap-2">
+                        <svg class="w-5 h-5 text-green-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>{{ . }}</span>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+            {{ end }}
+
+            {{ with .cons }}
+            <div class="border rounded-lg p-6">
+                <h3 class="text-xl font-bold mb-4 text-red-600">Cons</h3>
+                <ul class="space-y-2">
+                    {{ range . }}
+                    <li class="flex items-start gap-2">
+                        <svg class="w-5 h-5 text-red-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                        <span>{{ . }}</span>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+            {{ end }}
+        </div>
+        {{ end }}
+
+        {{ with .Params.specs }}
+        <div class="mt-8">
+            <h3 class="text-xl font-bold mb-4">Specifications</h3>
+            <div class="border rounded-lg overflow-hidden">
+                <table class="w-full">
+                    <tbody>
+                        {{ range $key, $value := . }}
+                        <tr class="border-b last:border-b-0">
+                            <td class="px-6 py-4 bg-gray-50 font-medium">{{ $key }}</td>
+                            <td class="px-6 py-4">{{ $value }}</td>
+                        </tr>
+                        {{ end }}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {{ end }}
+
+        {{ with .Params.tags }}
+        <div class="mt-8">
+            <div class="flex flex-wrap gap-2">
+                {{ range . }}
+                <a href="/tags/{{ . | urlize }}" class="badge border px-2 py-1 hover:bg-gray-100">{{ . }}</a>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</article>
+{{ end }} 

@@ -1,0 +1,43 @@
+baseURL: "/"
+languageCode: "en-us"
+title: "Freedom Reviews"
+theme: "freedom-reviews"
+
+params:
+  description: "Your trusted source for in-depth tech reviews and recommendations."
+
+menu:
+  main:
+    - name: "Reviews"
+      url: "/reviews/"
+      weight: 1
+    - name: "Categories"
+      url: "/categories/"
+      weight: 2
+    - name: "About"
+      url: "/about/"
+      weight: 3
+  
+  footer:
+    - name: "Privacy Policy"
+      url: "/privacy/"
+      weight: 1
+    - name: "Terms of Service"
+      url: "/terms/"
+      weight: 2
+    - name: "Contact"
+      url: "/contact/"
+      weight: 3
+
+taxonomies:
+  category: categories
+  tag: tags
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+imaging:
+  quality: 85
+  resampleFilter: Lanczos 

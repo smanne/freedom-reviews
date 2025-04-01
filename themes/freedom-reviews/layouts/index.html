@@ -1,0 +1,82 @@
+{{ define "main" }}
+<div class="container mx-auto px-4 py-8">
+    <!-- Hero Section -->
+    <div class="flex flex-col md:flex-row items-center justify-between mb-8">
+        <div class="w-full md:w-1/2 mb-6 md:mb-0">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">Discover the Best in Tech</h1>
+            <p class="text-gray-600 dark:text-gray-400 mb-6">Unbiased reviews, ratings, and insights on the latest technology products.</p>
+            <div class="flex gap-4">
+                <a href="/reviews" class="btn btn-primary">Browse Reviews</a>
+                <a href="/categories" class="btn btn-outline">Explore Categories</a>
+            </div>
+        </div>
+        <div class="w-full md:w-1/2 md:pl-8">
+            {{ partial "search.html" . }}
+        </div>
+    </div>
+
+    <!-- Featured Review -->
+    {{ partial "featured-review.html" . }}
+
+    <!-- Latest Reviews -->
+    <section class="py-12">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Latest Reviews</h2>
+            <a href="/reviews" class="text-primary hover:text-primary/90">View All</a>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex gap-4 mb-6 overflow-x-auto pb-2">
+            <button class="btn bg-primary text-white">All</button>
+            <button class="btn text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">Smartphones</button>
+            <button class="btn text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">Laptops</button>
+            <button class="btn text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">Audio</button>
+            <button class="btn text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">Wearables</button>
+        </div>
+
+        {{ $reviews := where .Site.RegularPages "Type" "reviews" }}
+        {{ if $reviews }}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {{ range first 6 $reviews }}
+            <div class="h-full">
+                {{ partial "review-card.html" . }}
+            </div>
+            {{ end }}
+        </div>
+        {{ else }}
+        <div class="text-center py-12">
+            <p class="text-gray-600 dark:text-gray-400">No reviews available yet. Check back soon!</p>
+        </div>
+        {{ end }}
+    </section>
+
+    <!-- Popular Categories -->
+    <section class="py-12">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Popular Categories</h2>
+            <a href="/categories" class="text-primary hover:text-primary/90">View All</a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {{ partial "category-card.html" (dict "title" "Smartphones" "count" 42 "image" "/images/short_logo.svg") }}
+            {{ partial "category-card.html" (dict "title" "Laptops" "count" 38 "image" "/images/short_logo.svg") }}
+            {{ partial "category-card.html" (dict "title" "Audio" "count" 27 "image" "/images/short_logo.svg") }}
+            {{ partial "category-card.html" (dict "title" "Wearables" "count" 19 "image" "/images/short_logo.svg") }}
+        </div>
+    </section>
+
+    <!-- Trending Topics -->
+    <section class="py-12">
+        <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Trending Topics</h2>
+        <div class="flex flex-wrap gap-3">
+            <a href="/tags/ai-technology" class="badge border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-800">AI Technology</a>
+            <a href="/tags/foldable-phones" class="badge border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-800">Foldable Phones</a>
+            <a href="/tags/gaming-laptops" class="badge border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-800">Gaming Laptops</a>
+            <a href="/tags/wireless-earbuds" class="badge border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-800">Wireless Earbuds</a>
+            <a href="/tags/smart-home" class="badge border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-800">Smart Home</a>
+            <a href="/tags/vr-headsets" class="badge border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-800">VR Headsets</a>
+            <a href="/tags/mechanical-keyboards" class="badge border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-800">Mechanical Keyboards</a>
+            <a href="/tags/fitness-trackers" class="badge border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-800">Fitness Trackers</a>
+        </div>
+    </section>
+</div>
+{{ end }} 

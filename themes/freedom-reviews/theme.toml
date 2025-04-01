@@ -1,0 +1,8 @@
+name = "Freedom Reviews"
+license = "MIT"
+description = "A modern theme for tech review sites"
+min_version = "0.80.0"
+
+[author]
+  name = "Freedom Reviews"
+  homepage = "https://example.com" 
